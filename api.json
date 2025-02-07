@@ -1,0 +1,68 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+      "title": "API with oneOf Response",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "example.com",
+        "description": "Test API server"
+      }
+    ],
+    "paths": {
+      "/api-with-success-response": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/AlphaResponse"
+                      },
+                      {
+                        "$ref": "#/components/schemas/BetaResponse"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "AlphaResponse": {
+          "type": "object",
+          "properties": {
+            "statustext": {
+              "type": "string"
+            },
+            "good": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "statustext",
+            "good"
+          ]
+        },
+        "BetaResponse": {
+          "type": "object",
+          "properties": {
+            "numbervalue": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "numbervalue"
+          ]
+        }
+      }
+    }
+  }
