@@ -53,7 +53,7 @@ async function uploadFile(walletPath, filePath) {
 
 async function main() {
     const walletPath = './wallet.json';
-    const filePath = './api.json';
+    const filePath = './api2.json';
     
     try {
         const txId = await uploadFile(walletPath, filePath);
