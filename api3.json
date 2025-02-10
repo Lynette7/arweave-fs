@@ -1,0 +1,72 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "TodoAPI",
+      "description": "A simple API to manage Todo items using an in-memory database.",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "https://virtserver.swaggerhub.com/WOFALOS465/TodoAPI/1.0.0",
+        "description": "SwaggerHub API Auto Mocking"
+      }
+    ],
+    "paths": {
+      "/todoitems/{id}": {
+        "get": {
+          "summary": "Get a specific Todo item by ID",
+          "operationId": "getTodoItemById",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The requested Todo item",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TodoItem"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Todo item not found"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "TodoItem": {
+          "required": [
+            "id",
+            "isCompleted",
+            "name"
+          ],
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "isCompleted": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  }
